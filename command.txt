@@ -1,0 +1,18 @@
+Vary {
+    Parameter {
+        Name = "val";
+        Ini = 20;
+        Step = 0.01;
+        Min = -200;
+        Max = 200;
+    }
+}
+
+OptimizationSettings {
+    MaxIte = 10000;
+    WriteStepNumber = false;
+}
+
+Algorithm {
+    Main = GoldenSection;
+}
