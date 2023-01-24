@@ -1,3 +1,3 @@
 #!/bin/sh
 
-xlim in.xlim > out.txt 2> log.txt
+xlim --genopt in.xlim > out.txt 2> log.txt

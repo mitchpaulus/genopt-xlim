@@ -15,4 +15,5 @@ OptimizationSettings {
 
 Algorithm {
     Main = GoldenSection;
+    AbsDiffFunction = 0.0000000001;
 }
