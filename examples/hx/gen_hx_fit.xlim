@@ -1,0 +1,42 @@
+`/mnt/c/Users/mpaulus/source/repos/genopt-xlim/gen_hx_part_load.tsv`
+r/Gen HX Customer Flow/ V_r {gpm}
+r/Gen HX Customer Inlet Temp/ T_5 {°F}
+r/Gen HX Customer Leaving Temp/ T_1_data {°F}
+r/Part Load/ X_g {%}
+r/Gen Elec Efficiency/ η_e {%}
+
+s_w = water_c * water_density
+
+η_e: plr {%} =-0.00096 {1/%} * plr^2 + 0.212 * plr + 32.2 {%}
+
+E_g {kW} = X_g * 2490 {kW}
+Q_g_r {kBTU/h} = V_r * s_w * (T_1 - T_5)
+Q_g_i {kBTU/h} = E_g / η_e
+
+a = %a% {°F/%^2}
+b = %b% {°F/%}
+c = %c% {°F}
+
+T_6 = a * X_g^2 + X_g * b + c
+
+η_r {%} = Q_g_r / Q_g_i
+η_t = η_r + η_e
+
+UA_g = %ua% {kBtu/hr °F}
+V_g = %vg% {gpm}
+
+C_g {btu/h °F} = V_g * water_c * water_density
+C_r {Btu/h °F} = V_r * water_c * water_density
+
+C_min = if C_g < C_r then C_g else C_r
+C_max = if C_g > C_r then C_g else C_r
+
+NTU {} = UA_g / C_min
+R_C {} = C_min / C_max
+
+ε_g {} = (C_g * exp: ((C_r - C_g) * UA_g) / (C_g * C_r); - C_g) / (C_r * exp: ((C_r - C_g) * UA_g) / (C_g * C_r); - C_g)
+T_1 = (T_6 - T_5) * ε_g + T_5
+T_7 = (C_g * T_6 + C_r * T_5 - C_r * T_1) / C_g
+
+T_1_diff_sq = (T_1_data - T_1)^2
+sse = sum: T_1_diff_sq;
