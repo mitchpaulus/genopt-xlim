@@ -1,0 +1,44 @@
+Vary {
+    Parameter {
+        Name = "eff_e";
+        Ini = 85;
+        Step = 1;
+        Min = 0;
+        Max = 100;
+    }
+    Parameter {
+        Name = "eff_c";
+        Ini = 85;
+        Step = 1;
+        Min = 0;
+        Max = 100;
+    }
+    Parameter {
+        Name = "eff_r";
+        Ini = 85;
+        Step = 1;
+        Min = 0;
+        Max = 100;
+    }
+    Parameter {
+        Name = "X";
+        Ini = 0.5;
+        Step = 0.005;
+        Min = 0;
+        Max = 1;
+    }
+}
+
+OptimizationSettings {
+    MaxIte = 10000;
+    MaxEqualResults = 100;
+    WriteStepNumber = false;
+}
+
+Algorithm {
+  Main = GPSHookeJeeves;
+  MeshSizeDivider = 2;
+  InitialMeshSizeExponent = 0;
+  MeshSizeExponentIncrement = 1;
+  NumberOfStepReduction = 4;
+}
