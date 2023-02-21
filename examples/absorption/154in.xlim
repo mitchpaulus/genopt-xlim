@@ -35,15 +35,15 @@ C_a_e {kBTU/h °F} = V_chw * ρ_w: T_8; * water_c
 C_a_c {kBTU/h °F} = V_cw * ρ_w: T_12; * water_c
 C_a_r {kBTU/h °F} = V_hw * ρ_w: T_1; * water_c
 
-ε_a_e = 100 {%}
-ε_a_c = 100 {%}
-ε_a_r = 85 {%}
+ε_a_e = 74.9375 {%}
+ε_a_c = 72.75 {%}
+ε_a_r = 72.75 {%}
 
 D_c = ε_a_c * C_a_c
 D_e = ε_a_e * C_a_e
 D_r = ε_a_r * C_a_r
 
-X = 0.48
+X = 0.5315625
 
 K_1 = sqrt: (D_c^2 * D_e^2 * T_8^2 + 2 * D_c^2 * D_e * D_r * T_1 * T_8 + D_c^2 * D_r^2 * T_1^2) * X^4 + ((2 * D_c * D_e^2 * D_r - 2 * D_c^2 * D_e^2) * T_8^2 + ((2 * D_c^2 * D_e * D_r + 2 * D_c^2 * D_e^2) * T_12 + (2 * D_c * D_e * D_r^2 + ((-2 * D_c * D_e^2) - 4 * D_c^2 * D_e) * D_r) * T_1) * T_8 + ((-2 * D_c^2 * D_r^2) - 2 * D_c^2 * D_e * D_r) * T_1 * T_12 + ((-2 * D_c * D_e) - 2 * D_c^2) * D_r^2 * T_1^2) * X^3 + ((D_e^2 * D_r^2 - 4 * D_c * D_e^2 * D_r + D_c^2 * D_e^2) * T_8^2 + ((2 * D_c * D_e * D_r^2 + (2 * D_c * D_e^2 - 4 * D_c^2 * D_e) * D_r - 2 * D_c^2 * D_e^2) * T_12 + (((-2 * D_e^2) - 4 * D_c * D_e) * D_r^2 + (2 * D_c * D_e^2 + 2 * D_c^2 * D_e) * D_r) * T_1) * T_8 + (D_c^2 * D_r^2 + 2 * D_c^2 * D_e * D_r + D_c^2 * D_e^2) * T_12^2 + ((2 * D_c * D_e + 4 * D_c^2) * D_r^2 + (2 * D_c * D_e^2 + 2 * D_c^2 * D_e) * D_r) * T_1 * T_12 + (D_e^2 + 2 * D_c * D_e + D_c^2) * D_r^2 * T_1^2) * X^2 + ((2 * D_c * D_e^2 * D_r - 2 * D_e^2 * D_r^2) * T_8^2 + (((2 * D_c^2 * D_e - 2 * D_c * D_e^2) * D_r - 4 * D_c * D_e * D_r^2) * T_12 + (2 * D_e^2 + 2 * D_c * D_e) * D_r^2 * T_1) * T_8 + ((-2 * D_c^2 * D_r^2) - 2 * D_c^2 * D_e * D_r) * T_12^2 + ((-2 * D_c * D_e) - 2 * D_c^2) * D_r^2 * T_1 * T_12) * X + D_e^2 * D_r^2 * T_8^2 + 2 * D_c * D_e * D_r^2 * T_12 * T_8 + D_c^2 * D_r^2 * T_12^2;
 K_2 = (2 * D_c * D_r + 2 * D_c * D_e) * X^2 + (((-2 * D_e) - 4 * D_c) * D_r - 2 * D_e^2 - 2 * D_c * D_e) * X + (2 * D_e + 2 * D_c) * D_r
