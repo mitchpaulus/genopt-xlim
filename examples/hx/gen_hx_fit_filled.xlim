@@ -20,17 +20,17 @@ E_g {kW} = X_g * 2490 {kW}
 Q_g_r {kBTU/h} = V_r * s_w * (T_1 - T_5_data)
 Q_g_i {kBTU/h} = E_g / η_e
 
-a = %a% {°R/%^2}
-b = %b% {°R/%}
-c = %c% {°R}
 
 T_6 = a * X_g^2 + X_g * b + c -- T_6 is the inlet temperature to the HX on the generator side, assuming a quadratic relationship to the electrical part load.
 
 η_r {%} = Q_g_r / Q_g_i
 η_t = η_r + η_e
 
-UA_g = %ua% {kBtu/hr °R}
-V_g = %vg% {gpm}
+a = 0.0002 {°R/%^2}
+b = 0.11 {°R/%}
+c = 676.125 {°R}
+UA_g = 355.625 {kBtu/hr °R}
+V_g = 547.375 {gpm}
 
 C_g {btu/h °F} = V_g * s_w
 C_r {Btu/h °F} = V_r * s_w

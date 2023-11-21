@@ -67,3 +67,7 @@ sse_Q_a_c = Q_a_c_diffs^2
 sse_Q_a_r = Q_a_r_diffs^2
 
 sse_total = sse_Q_a_e + sse_Q_a_c + sse_Q_a_r
+
+UA_a_e = C_a_e * ln:1 / (1 - ε_a_e);
+UA_a_c = C_a_c * ln:1 / (1 - ε_a_c);
+UA_a_r = C_a_r * ln:1 / (1 - ε_a_r);

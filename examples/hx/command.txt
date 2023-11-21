@@ -15,10 +15,10 @@ Vary {
     }
     Parameter {
         Name = "c";
-        Ini = 215;
+        Ini = 685;
         Step = 1;
         Min = 100;
-        Max = 300;
+        Max = 1000;
     }
     Parameter {
         Name = "ua";

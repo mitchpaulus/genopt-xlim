@@ -1,0 +1,30 @@
+`/mnt/c/Users/mpaulus/source/repos/genopt-xlim/examples/hex-2/hex_part_load.tsv`
+r/Gen Loop Flow/ V_r {gpm}
+r/HHW Loop Flow/ V_h {gpm}
+r/Gen Loop Inlet Temp/ T_3 {°F}
+r/HHW Loop Inlet Temp/ T_10 {°F}
+r/Gen Loop Outlet Temp/ T_4 {°F}
+r/HHW Loop Outlet Temp/ T_11 {°F}
+
+density = 970 {kg/m^3}
+s_w { kBTU / ft^3 °F } = water_c * density
+
+-- UA_hex = %uahex% {kBTU/h °F}
+UA_hex = 7390 {kBTU/h °F}
+
+C_r {kBtu/h °F} = V_r * water_c * water_density
+C_h {kBtu/h °F} = V_h * water_c * water_density
+
+ε = (T_3 - T_4) / (T_3 - T_10)
+
+C_min = if C_h < C_r then C_h else C_r
+C_max = if C_h > C_r then C_h else C_r
+
+NTU {} = UA_hex / C_min
+R_C {} = C_min / C_max
+
+ε_g_pred {} = (C_h * exp: ((C_r - C_h) * UA_hex) / (C_h * C_r); - C_h) / (C_r * exp: ((C_r - C_h) * UA_hex) / (C_h * C_r); - C_h)
+T_4_pred { °F } = T_3 - (T_3 - T_10) * ε_g_pred
+
+T_4_diff = T_4_pred - T_4
+sse = sum: T_4_diff^2;
