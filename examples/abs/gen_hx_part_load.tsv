@@ -1,0 +1,10 @@
+Gen Elec Part Load (%)	Gen HX Customer Flow (GPM)	Gen HX Customer Pressure Drop (psi)	Gen HX Customer Inlet Temp (°F)	Gen Elec Power (MW)	Gen HX Customer Leaving Temp (°F)	Gen Elec Efficiency (%)
+100	342	2.28	170	2490	216	43.8
+100	262	1.55	160	2490	220	43.8
+100	215	1.02	150	2490	223	43.8
+75	272	1.69	170	1868	217	42.7
+75	213	1.00	160	1868	220	42.7
+75	177	0.64	150	1868	223	42.7
+50	193	0.79	170	1245	220	40.4
+50	158	0.50	160	1245	221	40.4
+50	136	0.36	150	1245	221	40.4

@@ -1,0 +1,38 @@
+Vary {
+    Parameter {
+        Name = "uar";
+        Ini = 2500;
+        Step = 10;
+        Min = 100;
+        Max = 10000;
+    }
+    Parameter {
+        Name = "uac";
+        Ini = 2500;
+        Step = 10;
+        Min = 100;
+        Max = 10000;
+    }
+    Parameter {
+        Name = "ual";
+        Ini = 2500;
+        Step = 10;
+        Min = 100;
+        Max = 10000;
+    }
+}
+
+OptimizationSettings {
+    MaxIte = 10000;
+    MaxEqualResults = 100;
+    WriteStepNumber = false;
+    UnitsOfExecution = 4;
+}
+
+Algorithm {
+  Main = GPSHookeJeeves;
+  MeshSizeDivider = 2;
+  InitialMeshSizeExponent = 0;
+  MeshSizeExponentIncrement = 1;
+  NumberOfStepReduction = 5;
+}

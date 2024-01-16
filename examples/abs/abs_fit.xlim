@@ -1,0 +1,56 @@
+`/home/mp/repos/genopt-xlim/examples/abs/abs_fit_data.tsv`
+r/^HW Flow/ V_r {gpm}
+r/^HWST/ T_1_F {°F}
+r/^HWRT/ T_5_F {°F}
+r/CHW Flow/ V_c {gpm}
+r/CHWST/ T_9_F {°F}
+r/CHWRT/ T_8_F {°F}
+r/CW Flow/ V_l {gpm}
+r/CWST/ T_12_F {°F}
+r/CWRT/ T_13_F {°F}
+
+T_1 = K: T_1_F;
+T_5 = K: T_5_F;
+T_8 = K: T_8_F;
+T_9 = K: T_9_F;
+T_12 = K: T_12_F;
+T_13 = K: T_13_F;
+
+s_w = water_density * water_c
+
+UA_a_r = %uar% {kBTU/h °F}
+UA_a_l = %ual% {kBTU/h °F}
+UA_a_c = %uac% {kBTU/h °F}
+
+C_a_r = V_r * s_w
+C_a_l = V_l * s_w
+C_a_c = V_c * s_w
+
+ε_a_r = 1 - exp:-UA_a_r / C_a_r;
+ε_a_c = 1 - exp:-UA_a_c / C_a_c;
+ε_a_l = 1 - exp:-UA_a_l / C_a_l;
+
+T_14 {K} =  (sqrt:((4*C_a_l^2*C_a_r^2*T_12^2-4*C_a_l^2*C_a_r^2*T_1*T_12 +C_a_l^2*C_a_r^2*T_1^2) *ε_a_l^2 +((8*C_a_c*C_a_l*C_a_r^2*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1) *T_8 -8*C_a_c*C_a_l*C_a_r^2*T_1*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1^2) *ε_a_c*ε_a_l +(4*C_a_c^2*C_a_r^2*T_8^2+8*C_a_c^2*C_a_r^2*T_1*T_8 +4*C_a_c^2*C_a_r^2*T_1^2) *ε_a_c^2) *ε_a_r^2 +(((4*C_a_c*C_a_l^2*C_a_r*T_12 +2*C_a_c*C_a_l^2*C_a_r*T_1) *T_8 -8*C_a_c*C_a_l^2*C_a_r*T_12^2 +4*C_a_c*C_a_l^2*C_a_r*T_1*T_12) *ε_a_c*ε_a_l^2 +(4*C_a_c^2*C_a_l*C_a_r*T_8^2 +(4*C_a_c^2*C_a_l*C_a_r*T_1 -8*C_a_c^2*C_a_l*C_a_r*T_12) *T_8+8*C_a_c^2*C_a_l*C_a_r*T_1*T_12) *ε_a_c^2*ε_a_l) *ε_a_r +(C_a_c^2*C_a_l^2*T_8^2-4*C_a_c^2*C_a_l^2*T_12*T_8 +4*C_a_c^2*C_a_l^2*T_12^2) *ε_a_c^2*ε_a_l^2; +4*C_a_r^2*T_1*ε_a_r^2 +((2*C_a_l*C_a_r*T_12+C_a_l*C_a_r*T_1)*ε_a_l +(2*C_a_c*C_a_r*T_8-2*C_a_c*C_a_r*T_1)*ε_a_c) *ε_a_r+(C_a_c*C_a_l*T_8-2*C_a_c*C_a_l*T_12)*ε_a_c*ε_a_l) /(4*C_a_r^2*ε_a_r^2+(2*C_a_l*C_a_r*ε_a_l-4*C_a_c*C_a_r*ε_a_c) *ε_a_r-2*C_a_c*C_a_l*ε_a_c*ε_a_l)
+T_15 {K} = -(sqrt:((4*C_a_l^2*C_a_r^2*T_12^2-4*C_a_l^2*C_a_r^2*T_1*T_12 +C_a_l^2*C_a_r^2*T_1^2) *ε_a_l^2 +((8*C_a_c*C_a_l*C_a_r^2*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1) *T_8 -8*C_a_c*C_a_l*C_a_r^2*T_1*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1^2) *ε_a_c*ε_a_l +(4*C_a_c^2*C_a_r^2*T_8^2+8*C_a_c^2*C_a_r^2*T_1*T_8 +4*C_a_c^2*C_a_r^2*T_1^2) *ε_a_c^2) *ε_a_r^2 +(((4*C_a_c*C_a_l^2*C_a_r*T_12 +2*C_a_c*C_a_l^2*C_a_r*T_1) *T_8 -8*C_a_c*C_a_l^2*C_a_r*T_12^2 +4*C_a_c*C_a_l^2*C_a_r*T_1*T_12) *ε_a_c*ε_a_l^2 +(4*C_a_c^2*C_a_l*C_a_r*T_8^2 +(4*C_a_c^2*C_a_l*C_a_r*T_1 -8*C_a_c^2*C_a_l*C_a_r*T_12) *T_8+8*C_a_c^2*C_a_l*C_a_r*T_1*T_12) *ε_a_c^2*ε_a_l) *ε_a_r +(C_a_c^2*C_a_l^2*T_8^2-4*C_a_c^2*C_a_l^2*T_12*T_8 +4*C_a_c^2*C_a_l^2*T_12^2) *ε_a_c^2*ε_a_l^2; +((C_a_l*C_a_r*T_1-2*C_a_l*C_a_r*T_12)*ε_a_l +(2*C_a_c*C_a_r*T_1-2*C_a_c*C_a_r*T_8)*ε_a_c) *ε_a_r+(C_a_c*C_a_l*T_8+2*C_a_c*C_a_l*T_12)*ε_a_c*ε_a_l +4*C_a_c^2*T_8*ε_a_c^2) /((2*C_a_l*C_a_r*ε_a_l+4*C_a_c*C_a_r*ε_a_c)*ε_a_r -2*C_a_c*C_a_l*ε_a_c*ε_a_l-4*C_a_c^2*ε_a_c^2)
+
+T_14_2 = -(sqrt:((4*C_a_l^2*C_a_r^2*T_12^2-4*C_a_l^2*C_a_r^2*T_1*T_12 +C_a_l^2*C_a_r^2*T_1^2) *ε_a_l^2 +((8*C_a_c*C_a_l*C_a_r^2*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1) *T_8 -8*C_a_c*C_a_l*C_a_r^2*T_1*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1^2) *ε_a_c*ε_a_l +(4*C_a_c^2*C_a_r^2*T_8^2+8*C_a_c^2*C_a_r^2*T_1*T_8 +4*C_a_c^2*C_a_r^2*T_1^2) *ε_a_c^2) *ε_a_r^2 +(((4*C_a_c*C_a_l^2*C_a_r*T_12 +2*C_a_c*C_a_l^2*C_a_r*T_1) *T_8 -8*C_a_c*C_a_l^2*C_a_r*T_12^2 +4*C_a_c*C_a_l^2*C_a_r*T_1*T_12) *ε_a_c*ε_a_l^2 +(4*C_a_c^2*C_a_l*C_a_r*T_8^2 +(4*C_a_c^2*C_a_l*C_a_r*T_1 -8*C_a_c^2*C_a_l*C_a_r*T_12) *T_8+8*C_a_c^2*C_a_l*C_a_r*T_1*T_12) *ε_a_c^2*ε_a_l) *ε_a_r +(C_a_c^2*C_a_l^2*T_8^2-4*C_a_c^2*C_a_l^2*T_12*T_8 +4*C_a_c^2*C_a_l^2*T_12^2) *ε_a_c^2*ε_a_l^2; -4*C_a_r^2*T_1*ε_a_r^2 +(((-2*C_a_l*C_a_r*T_12)-C_a_l*C_a_r*T_1)*ε_a_l +(2*C_a_c*C_a_r*T_1-2*C_a_c*C_a_r*T_8)*ε_a_c) *ε_a_r+(2*C_a_c*C_a_l*T_12-C_a_c*C_a_l*T_8)*ε_a_c*ε_a_l) /(4*C_a_r^2*ε_a_r^2+(2*C_a_l*C_a_r*ε_a_l-4*C_a_c*C_a_r*ε_a_c) *ε_a_r-2*C_a_c*C_a_l*ε_a_c*ε_a_l)
+T_15_2 = (sqrt:((4*C_a_l^2*C_a_r^2*T_12^2-4*C_a_l^2*C_a_r^2*T_1*T_12 +C_a_l^2*C_a_r^2*T_1^2) *ε_a_l^2 +((8*C_a_c*C_a_l*C_a_r^2*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1) *T_8 -8*C_a_c*C_a_l*C_a_r^2*T_1*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1^2) *ε_a_c*ε_a_l +(4*C_a_c^2*C_a_r^2*T_8^2+8*C_a_c^2*C_a_r^2*T_1*T_8 +4*C_a_c^2*C_a_r^2*T_1^2) *ε_a_c^2) *ε_a_r^2 +(((4*C_a_c*C_a_l^2*C_a_r*T_12 +2*C_a_c*C_a_l^2*C_a_r*T_1) *T_8 -8*C_a_c*C_a_l^2*C_a_r*T_12^2 +4*C_a_c*C_a_l^2*C_a_r*T_1*T_12) *ε_a_c*ε_a_l^2 +(4*C_a_c^2*C_a_l*C_a_r*T_8^2 +(4*C_a_c^2*C_a_l*C_a_r*T_1 -8*C_a_c^2*C_a_l*C_a_r*T_12) *T_8+8*C_a_c^2*C_a_l*C_a_r*T_1*T_12) *ε_a_c^2*ε_a_l) *ε_a_r +(C_a_c^2*C_a_l^2*T_8^2-4*C_a_c^2*C_a_l^2*T_12*T_8 +4*C_a_c^2*C_a_l^2*T_12^2) *ε_a_c^2*ε_a_l^2; +((2*C_a_l*C_a_r*T_12-C_a_l*C_a_r*T_1)*ε_a_l +(2*C_a_c*C_a_r*T_8-2*C_a_c*C_a_r*T_1)*ε_a_c) *ε_a_r+((-C_a_c*C_a_l*T_8)-2*C_a_c*C_a_l*T_12)*ε_a_c*ε_a_l -4*C_a_c^2*T_8*ε_a_c^2) /((2*C_a_l*C_a_r*ε_a_l+4*C_a_c*C_a_r*ε_a_c)*ε_a_r -2*C_a_c*C_a_l*ε_a_c*ε_a_l-4*C_a_c^2*ε_a_c^2)
+T_16_2 = ((T_8-2*T_12+T_1)*sqrt:((4*C_a_l^2*C_a_r^2*T_12^2 -4*C_a_l^2*C_a_r^2*T_1*T_12 +C_a_l^2*C_a_r^2*T_1^2) *ε_a_l^2 +((8*C_a_c*C_a_l*C_a_r^2*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1) *T_8 -8*C_a_c*C_a_l*C_a_r^2*T_1*T_12 +4*C_a_c*C_a_l*C_a_r^2*T_1^2) *ε_a_c*ε_a_l +(4*C_a_c^2*C_a_r^2*T_8^2 +8*C_a_c^2*C_a_r^2*T_1*T_8 +4*C_a_c^2*C_a_r^2*T_1^2) *ε_a_c^2) *ε_a_r^2 +(((4*C_a_c*C_a_l^2*C_a_r*T_12 +2*C_a_c*C_a_l^2*C_a_r*T_1) *T_8 -8*C_a_c*C_a_l^2*C_a_r*T_12^2 +4*C_a_c*C_a_l^2*C_a_r*T_1*T_12) *ε_a_c*ε_a_l^2 +(4*C_a_c^2*C_a_l*C_a_r*T_8^2 +(4*C_a_c^2*C_a_l*C_a_r*T_1 -8*C_a_c^2*C_a_l*C_a_r*T_12) *T_8 +8*C_a_c^2*C_a_l*C_a_r*T_1*T_12) *ε_a_c^2*ε_a_l) *ε_a_r +(C_a_c^2*C_a_l^2*T_8^2 -4*C_a_c^2*C_a_l^2*T_12*T_8 +4*C_a_c^2*C_a_l^2*T_12^2) *ε_a_c^2*ε_a_l^2; +(((2*C_a_l*C_a_r*T_12+C_a_l*C_a_r*T_1)*T_8 -4*C_a_l*C_a_r*T_12^2+C_a_l*C_a_r*T_1^2) *ε_a_l +(2*C_a_c*C_a_r*T_8^2+(4*C_a_c*C_a_r*T_1-4*C_a_c*C_a_r*T_12) *T_8-4*C_a_c*C_a_r*T_1*T_12 +2*C_a_c*C_a_r*T_1^2) *ε_a_c) *ε_a_r +(2*C_a_l^2*T_12*T_8-4*C_a_l^2*T_12^2+2*C_a_l^2*T_1*T_12) *ε_a_l^2 +(C_a_c*C_a_l*T_8^2+C_a_c*C_a_l*T_1*T_8-4*C_a_c*C_a_l*T_12^2 +2*C_a_c*C_a_l*T_1*T_12) *ε_a_c*ε_a_l) /(((4*C_a_l*C_a_r*T_8-8*C_a_l*C_a_r*T_12+4*C_a_l*C_a_r*T_1) *ε_a_l +(8*C_a_c*C_a_r*T_8-16*C_a_c*C_a_r*T_12+8*C_a_c*C_a_r*T_1) *ε_a_c) *ε_a_r +(2*C_a_l^2*T_8-4*C_a_l^2*T_12+2*C_a_l^2*T_1)*ε_a_l^2 +(4*C_a_c*C_a_l*T_8-8*C_a_c*C_a_l*T_12+4*C_a_c*C_a_l*T_1) *ε_a_c*ε_a_l)
+
+Q_a_r {MBTU/h} = ε_a_r * C_a_r * (T_1 - T_14_2)
+Q_a_c {MBTU/h} = ε_a_c * C_a_c * (T_8 - T_15_2)
+Q_a_l {MBTU/h} = ε_a_l * C_a_l * (T_16_2 - T_12)
+
+Q_a_r_data {MBTU/h} = V_r * s_w * (T_1_F - T_5_F)
+Q_a_c_data {MBTU/h} = V_c * s_w * (T_8_F - T_9_F)
+Q_a_l_data {MBTU/h} = V_l * s_w * (T_13_F - T_12_F)
+
+Q_a_r_error {MBTU^2/h^2} = (Q_a_r - Q_a_r_data)^2
+Q_a_c_error {MBTU^2/h^2} = (Q_a_c - Q_a_c_data)^2
+Q_a_l_error {MBTU^2/h^2} = (Q_a_l - Q_a_l_data)^2
+
+sse_r = sum:Q_a_r_error;
+sse_c = sum:Q_a_c_error;
+sse_l = sum:Q_a_l_error;
+
+sse_tot = sse_r + sse_c + sse_l
