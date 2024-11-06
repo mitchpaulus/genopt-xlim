@@ -1,4 +1,4 @@
-`/mnt/c/Users/mpaulus/source/repos/genopt-xlim/examples/absorption/abs_fit_data.tsv`
+`/home/mitch/repos/genopt-xlim/examples/absorption/abs_fit_data.tsv`
 1 V_hw 2 hwst 3 hwrt 4 V_cw 5 cwst 6 cwrt 7 V_chw 8 chwrt 9 chwst
 
 UA_e = %uae% { kBtu/h °F }

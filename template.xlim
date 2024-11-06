@@ -1,1 +1,1 @@
-quadratic = (%val% - 2)^2 + 3
+quadratic = (%value% - 2)^2 + 3
